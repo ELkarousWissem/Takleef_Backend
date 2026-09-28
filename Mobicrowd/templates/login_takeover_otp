@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" style="background:#ffffff;">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="x-apple-disable-message-reformatting">
+    <title>Takleef — New Login Verification</title>
+    <style>
+      body{margin:0;padding:0;background:#ffffff;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}
+      table{border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt}
+      img{border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;display:block}
+      a{text-decoration:none}
+
+      .container{width:100%;max-width:100%;margin:0 auto;padding:0}
+      .card{width:100%;background:#ffffff;border:1px solid #e9eef5;border-radius:14px;overflow:hidden}
+      .inner{padding:28px}
+      .header-bar{background:#ffffff;border-bottom:1px solid #edf2f7;padding:16px 20px;text-align:center}
+      .header-bar img{margin:0 auto;}
+
+      .h1{margin:0;color:#083865;font:800 24px/1.35 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+      .lead{margin:0;color:#324556;font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+      .small{margin:0;color:#6b7a88;font:13px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+      .warning{margin:0;color:#9a3412;background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:12px 14px;font:13px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+
+      .otp{display:inline-block;background:#eaf4ff;color:#083865;border-radius:8px;padding:12px 18px;font:700 22px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;letter-spacing:3px}
+
+      .details{background:#f8fafc;border:1px solid #e5edf5;border-radius:10px;padding:12px 14px}
+      .detail-label{color:#6b7a88;font:12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+      .detail-value{color:#083865;font:600 14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+
+      .sp12{height:12px;line-height:12px;font-size:12px}
+      .sp16{height:16px;line-height:16px;font-size:16px}
+      .sp24{height:24px;line-height:24px;font-size:24px}
+
+      .center{text-align:center}
+
+      @media (max-width:480px){
+        .inner{padding:22px}
+        .h1{font-size:20px}
+        .lead{font-size:14px}
+      }
+
+      /*[if mso]>*/.h1,.lead,.small,.warning,.detail-label,.detail-value{font-family:Arial,sans-serif!important}
+    </style>
+  </head>
+
+  <body>
+    <div style="display:none!important;visibility:hidden;mso-hide:all;font-size:1px;line-height:1px;color:transparent;opacity:0;height:0;width:0;overflow:hidden;">
+      Use this OTP to verify your new Takleef login.
+    </div>
+
+    <table role="presentation" width="100%" bgcolor="#ffffff">
+      <tr>
+        <td align="center">
+          <div class="container">
+            <table role="presentation" class="card">
+              <tr>
+                <td class="header-bar">
+                  <img src="cid:logo" width="160" alt="Takleef">
+                </td>
+              </tr>
+
+              <tr>
+                <td class="inner">
+                  <h1 class="h1">Dear {{ full_name }},</h1>
+                  <div class="sp16"></div>
+
+                  <p class="lead">
+                    We detected a new login attempt to your <strong>Takleef</strong> account while another session is still active.
+                  </p>
+
+                  <div class="sp16"></div>
+
+                  <table role="presentation" width="100%" class="details">
+                    <tr>
+                      <td>
+                        <div class="detail-label">Platform</div>
+                        <div class="detail-value">{{ platform|default:"Unknown" }}</div>
+                      </td>
+                    </tr>
+                    {% if device_label %}
+                    <tr>
+                      <td style="padding-top:8px;">
+                        <div class="detail-label">Device</div>
+                        <div class="detail-value">{{ device_label }}</div>
+                      </td>
+                    </tr>
+                    {% endif %}
+                  </table>
+
+                  <div class="sp16"></div>
+
+                  <p class="lead">
+                    To continue on the new device, enter this verification code:
+                  </p>
+
+                  <div class="sp16"></div>
+
+                  <div class="center">
+                    <span class="otp">{{ otp_code }}</span>
+                  </div>
+
+                  <div class="sp12"></div>
+
+                  <p class="small center">
+                    This code is valid for {{ expires_minutes|default:"10" }} minutes. Do not share it with anyone.
+                  </p>
+
+                  <div class="sp24"></div>
+
+                  <p class="warning">
+                    If this was not you, do not use this code. We recommend changing your password immediately.
+                  </p>
+                </td>
+              </tr>
+            </table>
+
+            <div class="sp24"></div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

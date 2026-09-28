@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" style="background:#ffffff;">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Takleef — Representative Role Updated</title>
+    <style>
+      body{margin:0;padding:0;background:#ffffff}
+      table{border-collapse:collapse}
+      img{border:0;display:block}
+      .container{width:100%;max-width:100%;margin:0 auto;padding:0}
+      .card{width:100%;background:#ffffff;border:1px solid #e9eef5;border-radius:14px;overflow:hidden}
+      .inner{padding:28px}
+      .header-bar{background:#ffffff;border-bottom:1px solid #edf2f7;padding:16px 20px;text-align:center}
+      .header-bar img{margin:0 auto;}
+      .h1{margin:0;color:#083865;font:800 24px/1.35 Arial,sans-serif}
+      .lead{margin:0;color:#324556;font:15px/1.65 Arial,sans-serif}
+      .small{margin:0;color:#6b7a88;font:13px/1.6 Arial,sans-serif}
+      .sp16{height:16px;line-height:16px;font-size:16px}
+      .sp24{height:24px;line-height:24px;font-size:24px}
+    </style>
+  </head>
+  <body>
+    <table role="presentation" width="100%" bgcolor="#ffffff">
+      <tr>
+        <td align="center">
+          <div class="container">
+            <table role="presentation" class="card">
+              <tr>
+                <td class="header-bar">
+                  <img src="cid:logo" width="160" alt="Takleef">
+                </td>
+              </tr>
+              <tr>
+                <td class="inner">
+                  <h1 class="h1">Dear {{ full_name }},</h1>
+                  <div class="sp16"></div>
+
+                  <p class="lead">
+                    You are no longer the representative of the organization
+                    <strong>{{ organization_name }}</strong>.
+                  </p>
+
+                  <div class="sp16"></div>
+
+                  {% if became_public_requester %}
+                    <p class="lead">
+                      Your representative role has been removed, and your account is now available as a public requester account.
+                    </p>
+                  {% else %}
+                    <p class="lead">
+                      Your representative role for this organization has been removed, but your account still remains representative for another organization.
+                    </p>
+                  {% endif %}
+
+                  <div class="sp24"></div>
+
+                  <p class="small">
+                    If you believe this change was made by mistake, please contact the Takleef support team.
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
