@@ -418,7 +418,7 @@ class OrganizationActivateAPIView(APIView):
             return Response(
                 {
                     "error": (
-                        "The organization contract has expired. "
+                        "The organization contract has expired.  "
                         "Please renew the contract before activating the organization."
                     ),
                     "code": "contract_expired",
